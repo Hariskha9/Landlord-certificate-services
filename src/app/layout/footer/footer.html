@@ -1,0 +1,65 @@
+<footer>
+  <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)] grid grid-cols-[1.7fr_.75fr_.85fr_1fr] gap-[55px] max-lg:grid-cols-[1.5fr_1fr_1fr] max-sm:grid-cols-2">
+    <!-- Column 1: Brand & Phone -->
+    <div class="max-sm:col-span-2 [&>p]:my-7 [&>p]:max-w-[350px] [&>p]:text-xs [&>p]:text-white/60">
+      <div class="flex items-center gap-3 font-[Manrope] text-xs leading-tight font-medium tracking-[.09em] text-[#17255A] [&_b]:block [&_b]:text-[10px] [&_b]:tracking-[.13em] max-sm:text-[10px] max-sm:[&_b]:text-[8px] !text-white">
+        <span class="grid h-[42px] w-[38px] place-items-center rounded-[18px_18px_7px_7px] bg-[#17255A] text-white shadow-[inset_0_0_0_4px_rgba(255,255,255,.15)] [&>span]:grid [&>span]:h-5 [&>span]:w-3.5 [&>span]:place-items-center [&>span]:rounded-[7px_7px_2px_2px] [&>span]:border [&>span]:text-[8px] max-sm:h-[38px] max-sm:w-[34px]">
+          <span>L</span>
+        </span>
+        <span>
+          LANDLORD <b>CERTIFICATE SERVICES</b>
+        </span>
+      </div>
+      <p>
+        Property compliance made simple for residential and commercial
+        properties across London and the M25.
+      </p>
+      <a [href]="PHONE_LINK" class="text-[23px] font-bold">
+        {{ PHONE }}
+      </a>
+    </div>
+
+    <!-- Column 2: First 5 Services -->
+    <div  class="text-[11px] flex flex-col gap-2 text-[#ffffffc2]">
+      <h3>Services</h3>
+      @for (service of primaryServices; track service.path) {
+        <a [routerLink]="service.path" >
+          {{ service.short }}
+        </a>
+      }
+    </div>
+
+    <!-- Column 3: Remaining Services & Contact -->
+    <div  class="text-[11px] flex flex-col gap-2 text-[#ffffffc2]">
+      <h3>More services</h3>
+      @for (service of secondaryServices; track service.path) {
+        <a [routerLink]="service.path" >
+          {{ service.short }}
+        </a>
+      }
+      <a routerLink="/contact">Contact us</a>
+    </div>
+
+    <!-- Column 4: Company Details -->
+    <div  class="text-[11px] flex flex-col gap-2 text-[#ffffffc2]">
+      <h3>Company</h3>
+      <p>HM PRIME SOLUTIONS LIMITED T/A Landlord Certificate Services</p>
+      <p>Company No. 16880780</p>
+      <p>
+        Mon–Sat: 9:00 AM–6:00 PM
+        <br />
+        Sunday: Closed
+      </p>
+    </div>
+  </div>
+
+  <!-- Bottom Utility Bar -->
+  <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)] mt-[60px] flex justify-between border-t border-white/10 pt-[22px] text-[9px] tracking-[.08em] text-white/40 uppercase max-sm:flex-col max-sm:items-start max-sm:gap-3 [&_div]:flex [&_div]:gap-[18px]">
+    <span>© 2025 Landlord Certificate Services</span>
+    <div>
+      <span>Privacy</span>
+      <span>Cookies</span>
+      <span>Terms</span>
+    </div>
+  </div>
+</footer>

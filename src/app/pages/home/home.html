@@ -1,0 +1,160 @@
+<main>
+  <!-- Hero Section -->
+  <section class="flex min-h-[720px] items-center overflow-hidden bg-[#F4F7F5] py-[78px] max-sm:min-h-0 max-sm:py-[62px]">
+    <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)] grid grid-cols-[.94fr_1.06fr] items-center gap-16 max-lg:grid-cols-1 max-sm:gap-[60px]">
+      <div class="[&_h1]:mb-7 [&_h1]:text-[#17255A] [&_h1_em]:not-italic [&_h1_em]:text-[#00487C] [&>p]:max-w-[570px] [&>p]:text-lg [&>p]:text-[#65708C] max-sm:[&>p]:text-[15px]">
+        <app-eyebrow>London & the M25</app-eyebrow>
+        <h1>
+          Property compliance.
+          <br />
+          <em>Made simple.</em>
+        </h1>
+        <p>
+          Professional inspection, testing and certification for landlords,
+          homeowners, agents and commercial property owners.
+        </p>
+        <div class="my-7 flex flex-wrap items-center gap-2.5 text-xs font-bold tracking-[.05em] text-[#17255A] uppercase [&_i]:h-[3px] [&_i]:w-[3px] [&_i]:rounded-full [&_i]:bg-[#00487C]">
+          Electrical <i></i> Gas <i></i> Fire <i></i> EPC <i></i> Asbestos
+          <i></i> Legionella
+        </div>
+        <div class="flex flex-wrap gap-2.5 max-sm:[&>a]:flex-1">
+          <app-button-link to="/contact">Book a service</app-button-link>
+          <app-button-link [to]="WHATSAPP" tone="secondary">WhatsApp us</app-button-link>
+        </div>
+        <div class="mt-9 flex items-center gap-3 [&_p]:m-0 [&_p]:text-xs [&_p]:leading-snug [&_p]:text-[#65708C]">
+          <div class="flex [&_span]:grid [&_span]:h-[34px] [&_span]:w-[34px] [&_span]:place-items-center [&_span]:rounded-full [&_span]:border-2 [&_span]:border-[#F4F7F5] [&_span]:bg-[#17255A] [&_span]:text-[10px] [&_span]:font-bold [&_span]:text-white [&_span+span]:-ml-2 [&_span+span]:bg-[#00487C]">
+            <span>LC</span>
+            <span>✓</span>
+          </div>
+          <p>
+            <b>One trusted contact</b>
+            <br />
+            for multiple property services
+          </p>
+        </div>
+      </div>
+      <app-hero-graphic />
+    </div>
+  </section>
+
+  <!-- Services Grid Section -->
+  <section class="py-28 max-sm:py-[74px] bg-white">
+    <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)]">
+      <app-section-heading
+        eyebrow="Our services"
+        title="Everything your property needs."
+        copy="Clear services, published prices and one simple route to booking."
+      />
+      <div class="grid grid-cols-4 border-t border-l border-[#DCE3E5] max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:gap-3 max-sm:border-0">
+        @for (service of services; track service.path; let index = $index) {
+          <a
+            [routerLink]="service.path"
+            class="min-h-[280px] border-r border-b border-[#DCE3E5] p-7 transition hover:-translate-y-1 hover:shadow-xl max-sm:min-h-[240px] max-sm:border [&_h3]:mb-3 [&_h3]:text-[19px] [&_p]:min-h-[58px] [&_p]:text-xs [&_p]:leading-relaxed [&>strong]:text-xs [&>strong]:tracking-[.08em] [&>strong]:uppercase"
+            [class]="index === 0 ? 'bg-[#17255A] text-white [&_p]:text-white/65 [&>strong]:text-white' : 'bg-white [&_p]:text-[#65708C] [&>strong]:text-[#00487C]'"
+          >
+            <div class="mb-[38px] flex items-start justify-between">
+              <app-icon>{{ service.icon }}</app-icon>
+              <span class="text-xl text-[#00487C]">↗</span>
+            </div>
+            <h3>{{ service.short }}</h3>
+            <p>{{ service.description }}</p>
+            <strong>{{ service.from }}</strong>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-28 max-sm:py-[74px] bg-[#F4F7F5]">
+    <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)] grid grid-cols-2 max-sm:grid-cols-1">
+      <div class="rounded-l-md bg-[#17255A] p-16 text-white [&_h2]:mb-6 [&_p]:mb-8 [&_p]:text-white/65 max-sm:rounded-t-md max-sm:rounded-bl-none max-sm:p-[42px_28px]">
+        <app-eyebrow [light]="true">Why choose us</app-eyebrow>
+        <h2>
+          One company.
+          <br />
+          Multiple services.
+        </h2>
+        <p>
+          Stop coordinating a different company for every property
+          requirement. We make property compliance simpler from first call
+          to documentation.
+        </p>
+        <app-button-link to="/contact" tone="light">
+          Get a quote
+        </app-button-link>
+      </div>
+      <div class="rounded-r-md bg-white px-12 py-[30px] max-sm:rounded-b-md max-sm:rounded-tr-none max-sm:px-7 max-sm:py-3.5">
+        @for (item of reasons; track item[0]) {
+          <div class="grid grid-cols-[46px_1fr] gap-[18px] border-b border-[#DCE3E5] py-6 last:border-0 [&>span]:text-xs [&>span]:font-bold [&>span]:text-[#00487C] [&_h3]:mb-1 [&_h3]:text-[17px] [&_p]:m-0 [&_p]:text-xs [&_p]:text-[#65708C]">
+            <span>{{ item[0] }}</span>
+            <div>
+              <h3>{{ item[1] }}</h3>
+              <p>{{ item[2] }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-28 max-sm:py-[74px] bg-white">
+    <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)]">
+      <app-section-heading
+        eyebrow="How it works"
+        title="Five steps. No complexity."
+        [center]="true"
+      />
+      <div class="grid grid-cols-5 max-lg:grid-cols-3 max-sm:grid-cols-2">
+        @for (step of steps; track step; let index = $index) {
+          <div class="relative border-r border-[#DCE3E5] px-6 py-9 text-center [&>span]:mx-auto [&>span]:mb-[22px] [&>span]:grid [&>span]:h-[42px] [&>span]:w-[42px] [&>span]:place-items-center [&>span]:rounded-full [&>span]:bg-[#E7F0F5] [&>span]:text-[11px] [&>span]:font-bold [&>span]:text-[#00487C] [&_h3]:text-sm [&_i]:absolute [&_i]:top-[46px] [&_i]:-right-2 [&_i]:bg-white [&_i]:text-[#00487C] max-lg:[&_i]:hidden max-sm:border-b">
+            <span>{{ formatStepNumber(index) }}</span>
+            <h3>{{ step }}</h3>
+            @if (index < 4) {
+              <i>→</i>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Component -->
+  <app-coverage />
+
+  <!-- Before You Book Section -->
+  <section class="py-28 max-sm:py-[74px] bg-[#F4F7F5]">
+    <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)]">
+      <app-section-heading
+        eyebrow="Before you book"
+        title="Clear from the start."
+      />
+      <div class="grid grid-cols-3 gap-4 max-sm:grid-cols-1">
+        <div class="rounded-md border border-[#DCE3E5] bg-white p-9 [&_.icon]:mb-6 [&_h3]:text-lg [&_h3]:text-[#17255A] [&_p]:m-0 [&_p]:text-[13px] [&_p]:text-[#65708C]">
+          <app-icon>£</app-icon>
+          <h3>All-inclusive pricing</h3>
+          <p>All-inclusive survey pricing with no hidden survey cost.</p>
+        </div>
+        <div class="rounded-md border border-[#DCE3E5] bg-white p-9 [&_.icon]:mb-6 [&_h3]:text-lg [&_h3]:text-[#17255A] [&_p]:m-0 [&_p]:text-[13px] [&_p]:text-[#65708C]">
+          <app-icon>P</app-icon>
+          <h3>Parking</h3>
+          <p>£5 parking charge where no suitable parking is available.</p>
+        </div>
+        <div class="rounded-md border border-[#DCE3E5] bg-white p-9 [&_.icon]:mb-6 [&_h3]:text-lg [&_h3]:text-[#17255A] [&_p]:m-0 [&_p]:text-[13px] [&_p]:text-[#65708C]">
+          <app-icon>C</app-icon>
+          <h3>Congestion charge</h3>
+          <p>
+            £18 charge for properties within the Congestion Charge Zone.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conversion Band Component -->
+  <app-conversion-band
+    title="Need a property certificate?"
+    copy="Book your inspection, certificate or assessment today."
+  />
+</main>

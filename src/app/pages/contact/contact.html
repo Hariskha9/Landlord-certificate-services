@@ -1,0 +1,125 @@
+<main>
+      <section class="bg-[#17255A] py-[100px] text-white max-sm:py-[72px] [&_h1]:mb-6 [&_h1_em]:not-italic [&_h1_em]:text-[#00487C] [&_p]:max-w-[620px] [&_p]:text-[17px] [&_p]:text-white/70">
+        <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)]">
+          <app-eyebrow>Contact & booking</app-eyebrow>
+          <h1>
+            Let’s get your property
+            <br />
+            <em>compliant.</em>
+          </h1>
+          <p>
+            Tell us what you need and we’ll help arrange the right inspection,
+            certificate or assessment.
+          </p>
+        </div>
+      </section>
+
+      <section class="py-28 max-sm:py-[74px] bg-[#F4F7F5]">
+        <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)] grid grid-cols-[320px_1fr] items-start gap-[70px] max-lg:grid-cols-1">
+          <aside class="sticky top-[145px] max-lg:static max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-[30px] max-lg:gap-y-3 max-sm:grid-cols-1 [&>div]:border-b [&>div]:border-[#DCE3E5] [&>div]:py-6 [&_a]:block [&_a]:font-bold [&_a]:text-[#17255A] [&_p]:mt-2 [&_p]:text-[11px] [&_p]:text-[#65708C]">
+            <div>
+              <span class="mb-2.5 block text-[10px] font-bold tracking-[.12em] text-[#00487C] uppercase">Call us</span>
+              <a [href]="PHONE_LINK">{{ PHONE }}</a>
+              <p>Monday–Saturday, 9:00 AM–6:00 PM</p>
+            </div>
+            <div>
+              <span class="mb-2.5 block text-[10px] font-bold tracking-[.12em] text-[#00487C] uppercase">WhatsApp</span>
+              <a [href]="WHATSAPP" target="_blank" rel="noreferrer">Message our team ↗</a>
+              <p>A quick way to tell us about your property.</p>
+            </div>
+            <div>
+              <span class="mb-2.5 block text-[10px] font-bold tracking-[.12em] text-[#00487C] uppercase">Registered office</span>
+              <strong>
+                HM PRIME SOLUTIONS LIMITED
+                <br />
+                T/A Landlord Certificate Services
+              </strong>
+              <p>
+                Office 2, 321–323 High Road
+                <br />
+                Romford, England, RM6 6AX
+              </p>
+              <small>Company No. 16880780</small>
+            </div>
+            <div class="mt-[22px] rounded-md bg-[#17255A] !p-[22px] text-white [&>span]:mb-3.5 [&>span]:block [&>span]:font-bold [&_p]:flex [&_p]:justify-between [&_p]:text-white/70">
+              <span>Opening hours</span>
+              <p>
+                <b>Mon–Sat</b> 9:00 AM–6:00 PM
+              </p>
+              <p>
+                <b>Sunday</b> Closed
+              </p>
+            </div>
+          </aside>
+
+          <div class="rounded-lg bg-white p-[50px] shadow-[0_24px_70px_rgba(23,37,90,.08)] max-sm:p-[28px_20px]">
+            <div class="[&>span]:text-[10px] [&>span]:font-bold [&>span]:tracking-[.12em] [&>span]:text-[#00487C] [&>span]:uppercase [&_h2]:my-2.5 [&_h2]:text-[32px] [&_h2]:text-[#17255A] [&_p]:text-xs [&_p]:text-[#65708C]">
+              <span>Get a quote / book</span>
+              <h2>Property service request</h2>
+              <p>
+                Complete the form and our team will contact you to confirm
+                requirements, pricing and availability.
+              </p>
+            </div>
+
+            @if (sent()) {
+              <div class="px-5 py-20 text-center [&_.icon]:mx-auto [&_.icon]:mb-5 [&_h2]:text-[#17255A] [&_p]:mx-auto [&_p]:mb-6 [&_p]:max-w-[430px] [&_p]:text-[#65708C]">
+                <app-icon>✓</app-icon>
+                <h2>Thank you.</h2>
+                <p>
+                  Your request has been recorded. For an immediate response,
+                  call or WhatsApp us.
+                </p>
+                <app-button-link [to]="WHATSAPP">Continue on WhatsApp</app-button-link>
+              </div>
+            } @else {
+              <form (submit)="onSubmit($event)">
+                <div class="mt-[35px] mb-[18px] flex items-center gap-2.5 text-[15px] font-bold text-[#17255A] [&_span]:text-[10px] [&_span]:text-[#00487C]">
+                  <span>01</span>Customer details
+                </div>
+                <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+                  <app-form-field label="Full name" [required]="true" />
+                  <app-form-field label="Phone number" type="tel" [required]="true" />
+                  <app-form-field label="Email address" type="email" [required]="true" />
+                </div>
+
+                <div class="mt-[35px] mb-[18px] flex items-center gap-2.5 text-[15px] font-bold text-[#17255A] [&_span]:text-[10px] [&_span]:text-[#00487C]">
+                  <span>02</span>Property
+                </div>
+                <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+                  <app-form-field label="Property address" [required]="true" [full]="true" />
+                  <app-form-field label="Postcode" [required]="true" />
+                  <app-form-field
+                    label="Property type"
+                    [options]="propertyTypeOptions"
+                  />
+                </div>
+
+                <div class="mt-[35px] mb-[18px] flex items-center gap-2.5 text-[15px] font-bold text-[#17255A] [&_span]:text-[10px] [&_span]:text-[#00487C]">
+                  <span>03</span>Service
+                </div>
+                <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+                  <app-form-field
+                    label="Service required"
+                    [options]="serviceOptions"
+                    [required]="true"
+                  />
+                  <app-form-field label="Service quantity / size" />
+                  <app-form-field label="Preferred date" type="date" />
+                  <app-form-field label="Preferred time" type="time" />
+                  <app-form-field label="Additional information" type="textarea" [full]="true" />
+                </div>
+
+                <app-charges />
+
+                <button class="mt-7 flex min-h-[54px] w-full items-center justify-between rounded-md border-0 bg-[#17255A] px-[22px] text-xs font-bold tracking-[.08em] text-white uppercase cursor-pointer" type="submit">
+                  Get my quote <span>↗</span>
+                </button>
+              </form>
+            }
+          </div>
+        </div>
+      </section>
+
+      <app-whatsapp-help />
+    </main>

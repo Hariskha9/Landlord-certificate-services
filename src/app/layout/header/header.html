@@ -1,0 +1,111 @@
+<header class="sticky top-0 z-50 border-b border-[#17255A]/10 bg-[#F4F7F5]/95 backdrop-blur-xl">
+  <!-- Top Utility Bar -->
+  <div class="bg-[#17255A] text-[11px] tracking-[.12em] text-white uppercase max-sm:hidden">
+    <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)] flex h-[30px] items-center justify-between [&_a]:font-bold">
+      <span>London-wide property compliance</span>
+      <a [href]="PHONE_LINK">{{ PHONE }}</a>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)] flex h-[82px] items-center gap-9 max-sm:h-[76px]">
+    <!-- Brand Mark & Logo -->
+    <a 
+      routerLink="/" 
+      class="flex items-center gap-3 font-[Manrope] text-xs leading-tight font-medium tracking-[.09em] text-[#17255A] [&_b]:block [&_b]:text-[10px] [&_b]:tracking-[.13em] max-sm:text-[10px] max-sm:[&_b]:text-[8px]" 
+      (click)="closeMenu()"
+    >
+      <span class="grid h-[42px] w-[38px] place-items-center rounded-[18px_18px_7px_7px] bg-[#17255A] text-white shadow-[inset_0_0_0_4px_rgba(255,255,255,.15)] [&>span]:grid [&>span]:h-5 [&>span]:w-3.5 [&>span]:place-items-center [&>span]:rounded-[7px_7px_2px_2px] [&>span]:border [&>span]:text-[8px] max-sm:h-[38px] max-sm:w-[34px]">
+        <span>L</span>
+      </span>
+      <span>
+        LANDLORD <b>CERTIFICATE SERVICES</b>
+      </span>
+    </a>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button
+      type="button"
+      class="ml-auto hidden border-0 bg-transparent p-3 max-lg:grid max-lg:gap-1.5 [&_span]:h-0.5 [&_span]:w-6 [&_span]:bg-[#17255A]"
+      aria-label="Toggle menu"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Dynamic Navigation Container -->
+    <nav 
+      class="ml-auto flex items-center gap-[30px] text-sm font-semibold max-lg:absolute max-lg:top-28 max-lg:right-0 max-lg:left-0 max-lg:m-0 max-lg:bg-white max-lg:p-[18px] max-sm:top-[76px] max-sm:max-h-[calc(100vh-134px)] max-sm:overflow-y-auto [&>a]:py-7 max-lg:[&>a]:block max-lg:[&>a]:w-full max-lg:[&>a]:px-1.5 max-lg:[&>a]:py-3.5"
+      [class.max-lg:block]="open()"
+      [class.max-lg:hidden]="!open()"
+    >
+      <a routerLink="/" (click)="closeMenu()">
+        Home
+      </a>
+
+      <!-- Services Dropdown Group -->
+     <!-- Services Dropdown Group -->
+<div 
+  class="group relative"
+  (mouseenter)="showDropdown()"
+  (mouseleave)="hideDropdown()"
+>
+  <button 
+    type="button" 
+    class="flex items-center gap-1.5 py-7 max-lg:py-3.5 max-lg:w-full max-lg:justify-between"
+    (click)="dropdownOpen.update(v => !v)"
+  >
+    Services <span class="-mt-2">⌄</span>
+  </button>
+
+  <div 
+    class="absolute top-[65px] -left-6 w-[285px] rounded-2xl border border-[#DCE3E5] bg-white p-2.5 shadow-[0_18px_50px_rgba(23,37,90,.15)] transition-all duration-200 max-lg:static max-lg:w-auto max-lg:border-0 max-lg:bg-transparent max-lg:pl-3 max-lg:shadow-none [&_a]:flex [&_a]:justify-between [&_a]:rounded-lg [&_a]:px-3 [&_a]:py-2.5 [&_a]:font-medium [&_a:hover]:bg-[#F4F7F5] [&_a:hover]:text-[#00487C]"
+    [class.visible]="dropdownOpen()"
+    [class.opacity-100]="dropdownOpen()"
+    [class.translate-y-0]="dropdownOpen()"
+    [class.invisible]="!dropdownOpen()"
+    [class.opacity-0]="!dropdownOpen()"
+    [class.translate-y-2]="!dropdownOpen()"
+  >
+    @for (service of services; track service.path) {
+      <a
+        [routerLink]="service.path"
+        (click)="closeMenu()"
+      >
+        {{ service.short }}
+        <span>→</span>
+      </a>
+    }
+  </div>
+</div>
+
+      <a routerLink="/contact" (click)="closeMenu()">
+        Contact
+      </a>
+    </nav>
+
+    <!-- Desktop Action Buttons -->
+    <div class="flex gap-2 max-lg:hidden">
+      <!-- WhatsApp (ButtonLink tone="ghost") -->
+      <a 
+        [href]="WHATSAPP" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="inline-flex gap-3 items-center justify-center rounded-md border border-[#17255A]/20 bg-transparent px-4 py-3 text-xs font-bold tracking-wider text-[#17255A] uppercase transition hover:border-[#17255A] hover:bg-[#17255A]/5"
+      >
+        WhatsApp
+        <span aria-hidden="true">↗</span>
+      </a>
+
+      <!-- Get a Quote (ButtonLink primary) -->
+      <a 
+        routerLink="/contact" 
+        class="inline-flex gap-3 items-center justify-center rounded-md bg-[#17255A] px-4 py-3 text-xs font-bold tracking-wider text-white uppercase transition hover:bg-[#00487C] shadow-sm"
+      >
+        Get a quote
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,103 @@
+<main>
+      <section class="overflow-hidden bg-[#F4F7F5] py-[92px] max-sm:py-[65px]">
+        <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)] grid grid-cols-[1fr_430px] items-center gap-[70px] max-lg:grid-cols-1">
+          <div class="flex flex-col gap-3">
+            <app-eyebrow>{{ service.eyebrow }}</app-eyebrow>
+            <h1>{{ service.title }}</h1>
+            <p class="text-[17px] text-[#65708c]">
+              {{ service.description }}. Professional service across every London
+              borough and the M25.
+            </p>
+            <div class="flex flex-wrap gap-2.5 max-sm:[&>a]:flex-1">
+              <app-button-link to="/contact">Book this service</app-button-link>
+              <app-button-link [to]="WHATSAPP" tone="secondary">
+                WhatsApp us
+              </app-button-link>
+            </div>
+          </div>
+          <div class="relative grid h-[390px] place-items-center max-lg:h-[350px] max-sm:h-[300px]">
+            <div class="relative z-[2] grid h-[210px] w-[210px] place-items-center rounded-full bg-[#17255A] shadow-[28px_32px_0_#E7F0F5,0_30px_80px_rgba(23,37,90,.25)] [&_span]:text-[54px] [&_span]:font-extrabold [&_span]:text-white max-sm:h-[170px] max-sm:w-[170px]">
+              <span>{{ service.icon }}</span>
+            </div>
+            <div class="absolute right-0 bottom-[45px] z-[3] flex items-center gap-3 rounded-lg bg-white px-[18px] py-3.5 shadow-xl [&>span]:grid [&>span]:h-7 [&>span]:w-7 [&>span]:place-items-center [&>span]:rounded-full [&>span]:bg-[#00487C] [&>span]:text-white [&_b]:block [&_b]:text-[11px] [&_small]:block [&_small]:text-[9px] [&_small]:text-[#65708C]">
+              <span>✓</span>
+              <div>
+                <b>Professional service</b>
+                <small>London & M25</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[#17255A] py-6 text-white">
+        <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)] flex flex-wrap justify-center gap-[34px] max-sm:justify-start max-sm:gap-3 [&>div]:flex [&>div]:items-center [&>div]:gap-2 [&>div]:text-[11px] [&>div]:tracking-[.05em] [&>div]:text-white/80 [&>div]:uppercase max-sm:[&>div]:w-[calc(50%-8px)] max-sm:[&>div]:text-[9px]">
+          @for (item of service.intro; track item) {
+            <div>
+              <span>✓</span>
+              {{ item }}
+            </div>
+          }
+        </div>
+      </section>
+
+      <section class="py-28 max-sm:py-[74px] bg-white">
+        <div class="mx-auto w-[min(1180px,calc(100%-48px))] max-lg:max-w-[760px] max-sm:w-[calc(100%-28px)]">
+          <app-section-heading
+            eyebrow="Services & pricing"
+            title="Simple, transparent pricing."
+            copy="Choose the service that matches your property. Need help? Message us and we’ll guide you."
+          />
+          <div class="grid grid-cols-2 items-start gap-[18px] max-sm:grid-cols-1">
+            @for (section of service.sections; track section.title) {
+              <article class="overflow-hidden rounded-md border border-[#DCE3E5] bg-[#F4F7F5]">
+                <div class="min-h-[106px] bg-[#17255A] px-[30px] pt-7 pb-5 text-white [&_h2]:mb-1.5 [&_h2]:text-[23px] [&_p]:m-0 [&_p]:text-xs [&_p]:text-white/65">
+                  <h2>{{ section.title }}</h2>
+                  @if (section.subtitle) {
+                    <p>{{ section.subtitle }}</p>
+                  }
+                </div>
+
+                @if (section.rows) {
+                  <div class="px-7 py-2.5">
+                    @for (row of section.rows; track row[0]) {
+                      <div class="flex justify-between gap-5 border-b border-[#DCE3E5] px-0.5 py-4 text-[13px] last:border-0 [&_strong]:shrink-0 [&_strong]:text-[#00487C]">
+                        <span>{{ row[0] }}</span>
+                        <strong>{{ row[1] }}</strong>
+                      </div>
+                    }
+                  </div>
+                }
+
+                @if (section.bullets) {
+                  <div class="px-[30px] py-[22px] [&_div]:flex [&_div]:gap-3 [&_div]:border-b [&_div]:border-[#DCE3E5] [&_div]:py-3 [&_div]:text-[13px] [&_span]:font-bold [&_span]:text-[#00487C]">
+                    @for (bullet of section.bullets; track bullet) {
+                      <div>
+                        <span>✓</span>
+                        {{ bullet }}
+                      </div>
+                    }
+                  </div>
+                }
+
+                @if (section.note) {
+                  <p class="mx-[30px] mb-[22px] text-xs text-[#65708C]">{{ section.note }}</p>
+                }
+
+                <app-button-link to="/contact" tone="ghost">
+                  Book or enquire
+                </app-button-link>
+              </article>
+            }
+          </div>
+          <app-charges />
+        </div>
+      </section>
+
+      <!-- <app-whatsapp-help /> -->
+
+      <app-conversion-band
+        [title]="conversionTitle"
+        copy="Speak with our team and arrange your property visit."
+      />
+    </main>
